@@ -65,8 +65,8 @@ if (!Environment::is('production')) {
  * If you're using a document-oriented database, such as CouchDB or MongoDB, or another type of
  * database which uses 24-character hexidecimal values as primary keys, uncomment the routes below.
  */
-// Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
-// Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
+ Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null) );
+ Router::connect('/{:controller}/{:action}//{:id:[0-9a-f]{24}}');
 
 /**
  * Finally, connect the default route. This route acts as a catch-all, intercepting requests in the
@@ -80,6 +80,13 @@ if (!Environment::is('production')) {
  * In almost all cases, custom routes should be added above this one, since route-matching works in
  * a top-down fashion.
  */
-Router::connect('/{:controller}/{:action}/{:args}');
+
+ Router::connect('/{:controller}/{:action}/{:args}');
+
+ /* Allow for quering mongo via UUID */
+//Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
+//Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
+//Router::connect('/{:controller}/{:action}/{:args}');
+
 
 ?>

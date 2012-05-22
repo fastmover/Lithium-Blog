@@ -1,17 +1,17 @@
 <div class="container">
 		<div id="margintopforty">
 			<div class="span12">
-			<?php foreach($posts as $post): ?>
+			<?php //foreach($posts as $post): ?>
 				<div class="row-fluid">
 					<div class="span12">
 						<article>
-							<h1><?=$this->html->link($post->title,'/posts/view/'.$post->_id); ?></h1>
-							<p><?=$post->body ?></p>
+							<h1><?=$post['title'] ?></h1>
 							<? //print_r(get_defined_vars()); ?>
+							<p><?=$post['body'] ?></p>
 						</article>
 					</div>
 				</div>
-			<?php endforeach; ?>
+			<?php //endforeach; ?>
 		</div>
 	</div>
 </div>

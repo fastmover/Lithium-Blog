@@ -1,4 +1,12 @@
 
+############
+## Lithium App
+############
+
+# cache files that don't mean anything.
+app/resources/tmp/*
+
+
 #################
 ## Eclipse
 #################
@@ -127,6 +135,9 @@ Thumbs.db
 
 # Folder config file
 Desktop.ini
+
+
+
 
 
 #############
