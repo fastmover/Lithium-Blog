@@ -6,6 +6,8 @@
 # cache files that don't mean anything.
 app/resources/tmp/*
 
+# database connection information
+app/config/bootstrap/connections.php
 
 #################
 ## Eclipse
