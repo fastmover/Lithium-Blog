@@ -57,7 +57,7 @@
 					<li><a href="#">Link</a></li>
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$this->login->userName(); ?><b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
@@ -92,15 +92,5 @@
 	<script type="text/javascript">
 		$('.dropdown-toggle').dropdown();
 	</script>
-	<?php 
-	use app\models\Users;
-	use lithium\storage\Session;
-	$asdf = Session::check('default');
-	print_r($asdf);
-	//$user = Auth::check('default', $this->request);
-	//var_dump($data);
-	//var_dump($GLOBALS);
-	
-	print_r(get_declared_classes()); ?> 
 </body>
 </html>
