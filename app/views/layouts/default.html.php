@@ -57,13 +57,27 @@
 					<li><a href="#">Link</a></li>
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$this->login->userName(); ?><b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php 
+							if($this->login->userName()) {
+								echo $this->login->userName();
+							} else {
+								echo "Login";
+							}
+						?><b class="caret"></b></a>
 						<ul class="dropdown-menu">
+							<?php
+								if(!$this->login->userName()) {
+									?><li><?=$this->html->link("Login", array('Users::login')); ?></li><?php
+								} else {
+									?><li><?=$this->html->link("Logout", array('Users::logout')); ?></li><?php
+								}
+								/*
+							?>
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
+							<li><a href="#">Separated link</a></li><?php // */ ?>
 						</ul>
 					</li>
 				</ul>
