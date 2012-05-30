@@ -1,4 +1,4 @@
-
+﻿
 ############
 ## Lithium App
 ############
@@ -6,6 +6,7 @@
 # cache files that don't mean anything.
 app/resources/tmp/*
 
+app/config/bootstrap/connections.php
 
 #################
 ## Eclipse
