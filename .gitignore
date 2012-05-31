@@ -1,4 +1,4 @@
-
+﻿
 ############
 ## Lithium App
 ############
@@ -8,6 +8,7 @@ app/resources/tmp/*
 
 # database connection information
 app/config/bootstrap/connections.php
+app/webroot/moadmin.php
 
 #################
 ## Eclipse

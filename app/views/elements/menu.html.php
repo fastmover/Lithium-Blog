@@ -10,7 +10,19 @@
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><?=$this->html->link("Users", array('Users::index')); ?></li>
+							<li><?=$this->html->link("Add User", array('Users::add')); ?></li>
+							<li><?=$this->html->link("Edit User", array('Users::edit')); ?></li>
+							<li class="divider"></li>
+							<li class="nav-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+					
 					<li><a href="#">Link</a></li>
 					<li><a href="#">Link</a></li>
 					<li class="dropdown">

@@ -37,7 +37,7 @@
  */
 use lithium\data\Connections;
 
-Connections::add('default', array('type' =>  'MongoDb', 'database' => 'blog', 'host' => 'localhost'));
+Connections::add('default', array('type' =>  'MongoDb', 'database' => 'blog', 'host' => '10.0.0.51'));
 
 /**
  * Uncomment this configuration to use MongoDB as your default database.
