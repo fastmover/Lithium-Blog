@@ -1,3 +1,108 @@
 #margintopforty{
 	margin-top:40px;
 }
+
+/* CollapsiblePanel */
+
+.collapsibleContainer
+{
+    border: solid 1px #9BB5C1;
+
+}
+
+.collapsibleContainerTitle
+{
+    cursor:pointer;
+}
+
+.collapsibleContainerTitle div
+{
+    padding-top:5px;
+    padding-left:10px;
+    background-color:#9BB5C1;
+    color:#607882;
+}
+
+.collapsibleContainerContent
+{
+    padding: 10px;
+}
+
+/* CollapsiblePanel END */
+
+/* jQuery Tags */
+
+div.tagsinput { 
+	border:1px solid #CCC; 
+	background: #FFF; 
+	padding:5px; 
+	width:300px; 
+	height:50px; 
+	overflow-y: auto;
+}
+div.tagsinput span.tag { 
+	border: 1px solid #727272; 
+	-moz-border-radius:2px; 
+	-webkit-border-radius:2px; 
+	display: block; 
+	float: left; 
+	padding: 5px; 
+	text-decoration:none; 
+	/*background: #cde69c; 
+	color: #638421;*/
+	color:#EEEEEE;
+	background-image: linear-gradient(bottom, rgb(15,15,15) 9%, rgb(117,117,117) 73%, rgb(224,224,224) 99%);
+background-image: -o-linear-gradient(bottom, rgb(15,15,15) 9%, rgb(117,117,117) 73%, rgb(224,224,224) 99%);
+background-image: -moz-linear-gradient(bottom, rgb(15,15,15) 9%, rgb(117,117,117) 73%, rgb(224,224,224) 99%);
+background-image: -webkit-linear-gradient(bottom, rgb(15,15,15) 9%, rgb(117,117,117) 73%, rgb(224,224,224) 99%);
+background-image: -ms-linear-gradient(bottom, rgb(15,15,15) 9%, rgb(117,117,117) 73%, rgb(224,224,224) 99%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.09, rgb(15,15,15)),
+	color-stop(0.73, rgb(117,117,117)),
+	color-stop(0.99, rgb(224,224,224))
+);
+
+
+	margin-right: 5px;
+	margin-bottom:5px;font-family: helvetica;
+	font-size:13px;
+}
+div.tagsinput span.tag a { 
+	font-weight: bold;
+	color: #a5a5a5;
+	text-decoration:none;
+	font-size: 11px;
+} 
+div.tagsinput input { 
+	width:80px;
+	margin:0px;
+	font-family: helvetica;
+	font-size: 13px;
+	border:1px solid transparent;
+	padding:5px;
+	background: transparent;
+	color: #000;
+	outline:0px;
+	margin-right:5px;
+	margin-bottom:5px;
+}
+div.tagsinput div { 
+	display:block;
+	float: left;
+} 
+.tags_clear { 
+	clear: both;
+	width: 100%;
+	height: 0px;
+}
+.not_valid {background: #FBD8DB !important;
+	color: #90111A !important;
+}
+
+/* jQuery Tags END */
+
+

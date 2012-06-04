@@ -29,6 +29,16 @@ use lithium\core\Environment;
  */
 //Router::connect('/', 'Pages::view');
 Router::connect('/', 'Pages::view');
+Router::connect('/login', 'Users::login');
+//Router::connect('/users', 'Users::index');
+//Router::connect('/users/add', 'Users::add');
+//Router::connect('/users/view', 'Users::view');
+//Router::connect('/users/view/{:id:[0-9A-Fa-f]{24}}', 'Users::view');
+//Router::connect('/posts/view/{:id:[0-9A-Fa-f]{24}}', 'Posts::view');
+
+Router::connect('/tags/search/{:args}', 'Posts::searchTags');
+
+
 
 /**
  * Connect the rest of `PagesController`'s URLs. This will route URLs like `/pages/about` to
@@ -42,7 +52,8 @@ Router::connect('/pages/{:args}', 'Pages::view');
  * core, as well as your own application and any other loaded plugins or frameworks. Browse to
  * [http://path/to/app/test](/test) to run tests.
  */
-if (!Environment::is('production')) {
+
+ if (!Environment::is('production')) {
 	Router::connect('/test/{:args}', array('controller' => 'lithium\test\Controller'));
 	Router::connect('/test', array('controller' => 'lithium\test\Controller'));
 }
@@ -65,8 +76,8 @@ if (!Environment::is('production')) {
  * If you're using a document-oriented database, such as CouchDB or MongoDB, or another type of
  * database which uses 24-character hexidecimal values as primary keys, uncomment the routes below.
  */
- Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null) );
- Router::connect('/{:controller}/{:action}//{:id:[0-9a-f]{24}}');
+ //Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null) );
+ Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
 
 /**
  * Finally, connect the default route. This route acts as a catch-all, intercepting requests in the
@@ -81,12 +92,12 @@ if (!Environment::is('production')) {
  * a top-down fashion.
  */
 
- Router::connect('/{:controller}/{:action}/{:args}');
+ //Router::connect('/{:controller}/{:action}/{:args}');
 
  /* Allow for quering mongo via UUID */
-//Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
-//Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
-//Router::connect('/{:controller}/{:action}/{:args}');
+Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
+Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
+Router::connect('/{:controller}/{:action}/{:args}');
 
 
 ?>

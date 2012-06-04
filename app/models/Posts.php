@@ -6,24 +6,52 @@
 		protected $_schema = array(
 			'_id' => array('type' => 'id'),
 			'user_id' => array('type' => 'string'),
-			'account_id' => array('type' => 'string'),
-			'hash' => array('type' => 'string'),
 			
 			'date' => array('type' => 'date'),
-			'published' => array('type' => 'string'),
+			'date_first_saved' => array('type' => 'date'),
+			'published' => array('type' => 'boolean'),
+			'deleted' => array('type' => 'boolean'),
 			
 			'title' => array('type' => 'string'),
-			'description' => array('type' => 'string'),
 			'body' => array('type' => 'string'),
+			'tags' => array('type' => 'string', 'array' => true),
+			'category_ids' => array('type' => 'string', 'array' => true),
 			
 			'meta' => array('type' => 'object'),
 			'meta.title' => array('type' => 'string'), 
 			'meta.description' => array('type' => 'string'), 
-			'meta.keywords' => array('type' => 'string'), 
-			'meta.category_ids' => array('type' => 'string', 'array' => true),
-			'meta.tags' => array('type' => 'string', 'array' => true),
-			'meta.note' => array('type' => 'string')
+			'meta.keywords' => array('type' => 'string')
 		);
+		public $validates = array(
+			'username' => array(
+				array(
+					'notEmpty',
+					'required' => true,
+					'message' => 'Please supply a username.'
+				),
+				array(
+					'alphaNumeric',
+					'message' => 'A username may only contain letters and numbers.'
+				)
+			),
+			'password' => array(
+				array(
+					'notEmpty',
+					'required' => true,
+					'message' => 'Please supply a password.'
+				)
+			),
+			'date' => array(
+				array(
+					'blank'
+				)
+			)
+		);
+		public $date;
+		public $published;
+		public $deleted;
+		public $category_ids;
+		public $id;
 	}
 
 ?>

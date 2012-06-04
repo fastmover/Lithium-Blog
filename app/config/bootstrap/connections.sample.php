@@ -1,4 +1,9 @@
 <?php
+/*
+
+************        Rename this file to connections.php and configure below       *************
+
+*/
 /**
  * Lithium: the most rad php framework
  *
@@ -36,6 +41,8 @@
  * @see lithium\core\Environment
  */
 use lithium\data\Connections;
+
+//Connections::add('default', array('type' =>  'MongoDb', 'database' => 'blog', 'host' => 'localhost'));
 
 /**
  * Uncomment this configuration to use MongoDB as your default database.

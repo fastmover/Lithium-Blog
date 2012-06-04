@@ -38,6 +38,9 @@ use lithium\action\Dispatcher;
 use lithium\action\Response;
 use lithium\net\http\Media;
 
+
+Media::type('rss', 'application/rss+xml');
+
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
 	list($library, $asset) = explode('/', $params['request']->url, 2) + array("", "");
 
