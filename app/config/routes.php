@@ -77,7 +77,7 @@ Router::connect('/pages/{:args}', 'Pages::view');
  * database which uses 24-character hexidecimal values as primary keys, uncomment the routes below.
  */
  //Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null) );
- Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
+ //Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
 
 /**
  * Finally, connect the default route. This route acts as a catch-all, intercepting requests in the
@@ -93,6 +93,22 @@ Router::connect('/pages/{:args}', 'Pages::view');
  */
 
  //Router::connect('/{:controller}/{:action}/{:args}');
+
+use app\models\Pics;
+use lithium\action\Response;
+
+Router::connect( 
+	'/pics/view/{:id:[0-9a-f]{24}}.jpg',
+	array(), 
+	function( $request ) {
+		return new Response(
+			array(
+				'headers' => array( 'Content-type' => 'image/jpeg' ),
+				'body' => Pics::first( $request->id )->file->getBytes()
+			)
+		);
+	}
+);
 
  /* Allow for quering mongo via UUID */
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));

@@ -32,6 +32,17 @@
 							<li><a href="#">One more separated link</a></li>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pics <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><?=$this->html->link("Pics", array('Pics::index')); ?></li>
+							<li><?=$this->html->link("Add Pic", array('Pics::add')); ?></li>
+							<li class="divider"></li>
+							<li class="nav-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
 					<li><a href="#">Link</a></li>
 					<li><a href="#">Link</a></li>
 					<li class="dropdown">

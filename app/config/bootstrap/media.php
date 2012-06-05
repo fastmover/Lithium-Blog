@@ -41,6 +41,17 @@ use lithium\net\http\Media;
 
 Media::type('rss', 'application/rss+xml');
 
+Media::type( 
+	'jpg', 
+	'image/jpeg', 
+	array(
+		'cast' => false,
+		'encode' => function( $data ) {
+			return $data['pic']->file->getBytes();
+		}
+	)
+);
+
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
 	list($library, $asset) = explode('/', $params['request']->url, 2) + array("", "");
 
