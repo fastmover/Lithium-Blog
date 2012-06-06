@@ -13,7 +13,7 @@
 	<title>Application > <?php echo $this->title(); ?></title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<?php 
-		echo $this->html->style(array('debug', 'bootstrap.min', 'app', 'jquery-ui-1.8.20.custom')); 
+		echo $this->html->style(array('debug', 'bootstrap.min', 'app', 'jquery-ui-1.8.20.custom', 'bootstrap-wysihtml5')); 
 		//echo $this->html->style(array('debug', 'lithium', 'bootstrap')); 
 	?>
 	<?php echo $this->html->script('bootstrap.min'); ?>

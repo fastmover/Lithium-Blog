@@ -25,7 +25,76 @@ class PicsController extends \lithium\action\Controller {
 		$this->_render['template'] = 'edit';
 		return compact('pic');
 	}
+	public function ajaxUpload() {
+		$pic = Pics::create();
 
+		if ( ( $this->request->data ) && $pic->save( $this->request->data ) ) {
+			//$this->redirect( array( 'Pics::view', 'id' => $pic->_id ) );
+			$this->_render['template'] = 'ajaxUpload';
+			/*
+			$picc = json_decode(
+				'[
+					{
+						"name":' . $pic->filename . ',
+						"size":"' . $pic->size . '",
+						"url":"/pics/view/' . $pic->_id . '.jpg",
+						"thumbnail_url":"/pics/view/' . $pic->_id . '.jpg",
+						"delete_url":"/pics/delete/' . $pic->_id . '.jpg}",
+						"delete_type":"DELETE"
+					}
+				]'
+			);
+			$picc = array( 0 => array(
+				"name" => $pic->file->name,
+				"size" => $pic->file->size,
+				"url" => "/pics/view/" . $pic->_id . ".jpg",
+				"thumbnail_url" => "/pics/view/" . $pic->_id . ".jpg",
+				"delete_url" => "/pics/delete/" . $pic->_id,
+				"delete_type" => "DELETE"
+				
+			));
+			
+			$name = $pic->file->name;
+			$size = $pic->file->size;
+			$url = "/pics/view/" . $picurl . ".jpg";
+			$thumbnail_url = "/pics/view/" . $pic->_id . ".jpg";
+			$delete_url = "/pics/delete/" . $pic->_id;
+			$delete_type = "DELETE";
+			*/
+			
+			
+			
+			return compact( 'pic' );
+			//print_r($picc);
+			//return $this->render(array('json' => $pic, 'status'=> 200));
+			
+			//return $this->render(array('json' => $picc, 'status'=> 200));
+			//return compact( 'name', 'size', 'url', 'thumbnail_url', 'delete_url', 'delete_type' );
+		}
+		//$url = Request->_base;
+		
+	
+
+		
+		
+		//print_r(Request::_base());
+		//$this->_render['template'] = 'ajaxUpload';
+		$picc = json_decode(
+				'[
+					{
+						"name":' . $pic->filename . ',
+						"size":"' . $pic->size . '",
+						"url":"/pics/view/' . $pic->_id . '.jpg",
+						"thumbnail_url":"/pics/view/' . $pic->_id . '.jpg",
+						"delete_url":"/pics/delete/' . $pic->_id . '.jpg}",
+						"delete_type":"DELETE"
+					}
+				]'
+			);
+		$picc = array();
+		return $this->render(array('json' => $data = $picc, 'status'=> 200));
+		//return compact('picc');
+	}
 	public function edit() {
 		$pic = Pics::find( $this->request->id );
 

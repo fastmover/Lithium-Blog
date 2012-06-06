@@ -106,6 +106,22 @@ $checks = array(
 			edit the file <code>views/layouts/default.html.php</code>."
 		);
 	},
+	'phpExtensions' => function() use ($notify, $support) {
+		if (extension_loaded('gd') && function_exists('gd_info')) {
+			//gd is installed and enabled;
+			$gdsupport = 1;
+		} else {
+			$gdsupport = null;
+		}
+		$map = array(
+			'lithium\image\manipulation\support\gd' => $gdsupport
+		);
+		return $notify(
+			'notice',
+			'PHP Libraries enabled',
+			'<div class="test-result solution">' . $support($map) . '</div>'
+		);
+	},
 	'routing' => function() use ($notify, $self) {
 		$routing = $self->html->link('routing', 'http://lithify.me/docs/lithium/net/http/Router');
 
@@ -147,7 +163,6 @@ $checks = array(
 		$list = Libraries::locate('adapter.storage.cache', null, array('recursive' => false));
 		$list = array_filter($list, function($class) { return method_exists($class, 'enabled'); });
 		$map = array_combine($list, array_map(function($c) { return $c::enabled(); }, $list));
-
 		return $notify(
 			'notice',
 			'Cache support',

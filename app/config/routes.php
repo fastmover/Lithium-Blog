@@ -30,6 +30,7 @@ use lithium\core\Environment;
 //Router::connect('/', 'Pages::view');
 Router::connect('/', 'Pages::view');
 Router::connect('/login', 'Users::login');
+
 //Router::connect('/users', 'Users::index');
 //Router::connect('/users/add', 'Users::add');
 //Router::connect('/users/view', 'Users::view');
@@ -109,10 +110,11 @@ Router::connect(
 		);
 	}
 );
-
+Router::connect('/{:controller}/{:action}.{:type}');
  /* Allow for quering mongo via UUID */
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
+
 Router::connect('/{:controller}/{:action}/{:args}');
 
 

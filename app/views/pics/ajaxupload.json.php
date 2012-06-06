@@ -1,0 +1,10 @@
+[
+	{
+		"name":"<?=$pic->file->name;?>",
+		"size":"<?=$pic->file->size;?>",
+		"url":"<?=$this->url();?>pics/view/<?=$pic->_id;?>.jpg",
+		"thumbnail_url":"<?=$this->url();?>pics/view/<?=$pic->_id;?>.jpg",
+		"delete_url":"<?=$this->url();?>pics/delete/<?=$pic->_id;?>.jpg}",
+		"delete_type":"DELETE"
+	}
+]

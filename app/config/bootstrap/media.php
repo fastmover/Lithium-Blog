@@ -52,6 +52,16 @@ Media::type(
 	)
 );
 
+Media::type(
+	'json', 
+	'application/json'/*, 
+	array(
+		'encode' => function($data) {
+			return $data;
+		}
+	)*/
+);
+
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
 	list($library, $asset) = explode('/', $params['request']->url, 2) + array("", "");
 
