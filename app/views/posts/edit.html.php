@@ -37,7 +37,12 @@
 					</div>
 				</div>
 				<div class="span5">
-					<?=$this->form->submit( 'Update Post' ); ?>
+					<?=$this->form->submit( 
+						'Update Post',
+						array(
+							'class' => 'buttonz'
+						)
+					); ?>
 				</div>
 			</div>
 			

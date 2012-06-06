@@ -22,6 +22,7 @@
 			'meta.description' => array('type' => 'string'), 
 			'meta.keywords' => array('type' => 'string')
 		);
+		/*
 		public $validates = array(
 			'username' => array(
 				array(
@@ -47,6 +48,7 @@
 				)
 			)
 		);
+		*/
 		public $date;
 		public $published;
 		public $deleted;
