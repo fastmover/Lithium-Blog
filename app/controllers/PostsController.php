@@ -33,7 +33,7 @@
 				$success = $post->save();
 				
 			}
-			
+			$this->_render['layout'] = 'wysiwyg';
 			return compact('success');
 			
 		}

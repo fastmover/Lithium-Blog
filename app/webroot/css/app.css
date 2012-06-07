@@ -6,26 +6,26 @@
 
 .collapsibleContainer
 {
-    border: solid 1px #9BB5C1;
+	border: solid 1px #9BB5C1;
 
 }
 
 .collapsibleContainerTitle
 {
-    cursor:pointer;
+	cursor:pointer;
 }
 
 .collapsibleContainerTitle div
 {
-    padding-top:5px;
-    padding-left:10px;
-    background-color:#9BB5C1;
-    color:#607882;
+	padding-top:5px;
+	padding-left:10px;
+	background-color:#9BB5C1;
+	color:#607882;
 }
 
 .collapsibleContainerContent
 {
-    padding: 10px;
+	padding: 10px;
 }
 
 /* CollapsiblePanel END */
@@ -413,8 +413,8 @@ a.fork {
 */
 .fluidtextarea {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* IE 8+ */
+	-moz-box-sizing: border-box;	/* Firefox, other Gecko */
+	box-sizing: border-box;		 /* IE 8+ */
 	width:100%;
 	display:block;
 }
