@@ -528,6 +528,20 @@
                 dataType: e.data.fileupload.options.dataType
             });
         },
+		/* wysihtml5 */
+		_insertHandler: function (e) {
+            e.preventDefault();
+			
+			/*
+            var button = $(this);
+            e.data.fileupload._trigger('destroy', e, {
+                context: button.closest('.template-download'),
+                url: button.attr('data-url'),
+                type: button.attr('data-type') || 'DELETE',
+                dataType: e.data.fileupload.options.dataType
+            });
+			*/
+        },
 
         _forceReflow: function (node) {
             return $.support.transition && node.length &&
@@ -614,6 +628,12 @@
                     'click.' + this.options.namespace,
                     eventData,
                     this._deleteHandler
+                )
+				.delegate(
+                    '.insert button',
+                    'click.' + this.options.namespace,
+                    eventData,
+                    this._insertHandler
                 );
             this._initButtonBarEventHandlers();
         },

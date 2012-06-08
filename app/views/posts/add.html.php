@@ -3,7 +3,7 @@
 		<?php if ( $success ): ?>
 			<p class="alert alert-success">Post Successfully Posted</p>
 		<?php endif; ?>
-		<?=$this->form->create( null, array( 'id' => 'postaddform' ) ); ?>
+		<?=$this->form->create( null, array( 'id' => 'fileupload' ) ); ?>
 		
 			<div class="row-fluid">
 				<div class="span12">
@@ -65,11 +65,33 @@
 				*/
 				?>
 			</div>
-			
-			
-					
-		
-		<!-- The global progress information -->
+			<br />
+
+
+ <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+            <div class="span7">
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="icon-plus icon-white"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="file" multiple>
+                </span>
+                <button type="submit" class="btn btn-primary start">
+                    <i class="icon-upload icon-white"></i>
+                    <span>Start upload</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="icon-ban-circle icon-white"></i>
+                    <span>Cancel upload</span>
+                </button>
+                <button type="button" class="btn btn-danger delete">
+                    <i class="icon-trash icon-white"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" class="toggle">
+            </div>
+            <!-- The global progress information -->
             <div class="span5 fileupload-progress fade">
                 <!-- The global progress bar -->
                 <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
@@ -78,13 +100,18 @@
                 <!-- The extended global progress information -->
                 <div class="progress-extended">&nbsp;</div>
             </div>
-			<div class="fileupload-loading"></div>
-			<br />
-			<table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+        </div>
+        <!-- The loading indicator is shown during file processing -->
+        <div class="fileupload-loading"></div>
+        <br>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+		
+		
+		
 			
 			
-			
-			<!-- modal-gallery is the modal dialog used for the image gallery -->
+<!-- modal-gallery is the modal dialog used for the image gallery -->
 <div id="modal-gallery" class="modal modal-gallery hide fade" data-filter=":odd">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">&times;</a>
@@ -160,6 +187,12 @@
             <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
             <td colspan="2"></td>
         {% } %}
+		<td class="insert">
+            <a class="btn btn-primary" data-wysihtml5-command="insertImage" data-wysihtml5-command-value="{%=file.url%}" >
+                <i class="icon-file icon-white"></i>
+                <span>Insert</span>
+            </a>
+        </td>
         <td class="delete">
             <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
                 <i class="icon-trash icon-white"></i>
@@ -183,15 +216,39 @@
 			
 		<?=$this->form->end(); ?>
 	
-			
+
+
+
+
+
+	
 	</div>
 </div>
-<?php echo $this->html->script( array( 
-	/*'jquery.collapsible.min', */
+
+
+<?php echo $this->html->script( array(
+	/*'jquery.min',*/
+	'jquery-1.7.2',
+	
+	'wysihtml5upload/jquery.ui.widget',
+	'http://blueimp.github.com/JavaScript-Templates/tmpl.min.js',
+	'http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js',
+	'http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js',
+	'http://blueimp.github.com/cdn/js/bootstrap.min.js',
+
+	'jquery-ui-1.8.20.custom.min', 
+
+	
+	'bootstrap.min',
+	/*
 	'jquery.tagsinput.min', 
+	*/
 	'advanced', 
+
 	'wysihtml5-0.3.0.min', 
+
 	'bootstrap-wysihtml5', 
+	
 	'wysihtml5upload/bootstrap-image-gallery.min',
 	'wysihtml5upload/jquery.iframe-transport',
 	'wysihtml5upload/jquery.fileupload',
@@ -199,21 +256,24 @@
 	'wysihtml5upload/jquery.fileupload-ui',
 	'wysihtml5upload/locale',
 	/*'wysihtml5upload/main2'*/
-	'wysihtml5upload/bootstrap-image-gallery.min'
+	/*'jquery.collapsible.min', */
 ) ); ?>
 
-
-
+<?php 
+/*
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
 <script src="http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js"></script>
 <!-- Bootstrap JS and Bootstrap Image Gallery are not required, but included for the demo -->
-
+*/
+?>
 
 
 <script type="text/javascript">
+
+/*
 $( document ).ready( function() {
 	//Dynamic Blog Title
 	$(".BlogTitle").keyup(function() {
@@ -227,6 +287,82 @@ $( document ).ready( function() {
 	});
 	//Tags
 	$('.tags').tagsInput({width:'auto'});
+	
+	
+	/* wysihtml5 image upload */
+
+	// Initialize the jQuery File Upload widget:
+	//$('#fileupload').fileupload();
+	/*
+	$('#fileupload').fileupload( {
+		url: 'http://localhost/github/Lithium-Blog/pics/ajaxUpload.json',
+		sequentialUploads: true,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        },
+		drop: function (e, data) {
+			$.each(data.files, function (index, file) {
+				alert('Dropped file: ' + file.name);
+			});
+			//data.submit();
+		},
+		add: function (e, data) {
+			$(this).fileupload('process', data).done(function () {
+				data.submit();
+			});
+		}
+    });
+	
+	
+	/*
+	
+	
+	$('#fileupload').fileupload( {
+		url: 'http://localhost/github/Lithium-Blog/pics/ajaxUpload.json',
+		sequentialUploads: true,
+        dataType: 'json'
+	});
+	// */
+	
+	
+	/*
+	
+} );
+
+*/
+
+
+
+$(function () {
+	'use strict';
+
+	// Initialize the jQuery File Upload widget:
+	$('#fileupload').fileupload( { url: 'http://localhost/github/Lithium-Blog/pics/ajaxUpload.json', dataType: 'json' } );
+
+	// Enable iframe cross-domain access via redirect option:
+	$('#fileupload').fileupload(
+		'option',
+		'redirect',
+		window.location.href.replace(
+			/\/[^\/]*$/,
+			'/cors/result.html?%s'
+		)
+	);
+	/*
+	// Load existing files:
+	$('#fileupload').each(function () {
+		var that = this;
+		$.getJSON(this.action, function (result) {
+			if (result && result.length) {
+				$(that).fileupload('option', 'done')
+					.call(that, null, {result: result});
+			}
+		});
+	});
+	// */
 	//Wysihtml5
 	$('#wysihtml5-textarea').wysihtml5({
 		"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
@@ -242,29 +378,6 @@ $( document ).ready( function() {
 		parserRules:  wysihtml5ParserRules // defined in parser rules set 
 	});
 	*/
-	
-	/* wysihtml5 image upload */
-	'use strict';
-
-	// Initialize the jQuery File Upload widget:
-	//$('#fileupload').fileupload();
-	
-	$('#fileupload').fileupload({
-		url: 'http://localhost/github/Lithium-Blog/pics/ajaxUpload.json',
-		sequentialUploads: true,
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
-            });
-        },
-		drop: function (e, data) {
-			$.each(data.files, function (index, file) {
-				alert('Dropped file: ' + file.name);
-			});
-		},
-    });
-	
-	
-} );
+});
+// */
 </script>

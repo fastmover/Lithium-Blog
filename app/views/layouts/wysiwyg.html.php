@@ -11,21 +11,25 @@
 <head>
 	<?php echo $this->html->charset();?>
 	<title>Application > <?php echo $this->title(); ?></title>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 	<?php 
 		echo $this->html->style( array( 
-			'debug', 
-			'bootstrap.min', 
-			'app', 
-			'jquery-ui-1.8.20.custom', 
-			'bootstrap-wysihtml5' 
+			'debug',
+			
+			'jquery-ui-1.8.20.custom',
+			'bootstrap-wysihtml5',
+			
+			'bootstrap.min',
+			'wysihtml5upload/style',
+			'http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css',
+			'wysihtml5upload/bootstrap-image-gallery.min',
+			'wysihtml5upload/jquery.fileupload-ui',
+			'app'
+			
 		) ); 
 		//echo $this->html->style(array('debug', 'lithium', 'bootstrap')); 
 	?>
-	<?php echo $this->html->script( array( 
-		'jquery-ui-1.8.20.custom.min', 
-		'bootstrap.min' 
-	) ); ?>
+
 	<?php echo $this->html->link('Icon', null, array( 'type' => 'icon') ); ?>
 	
 </head>
@@ -39,7 +43,7 @@
 			<div class="span12">
 				<div class="row-fluid">
 					<div class="span4">
-						<h1>Blog</h1>
+						<h1></h1>
 					</div>
 					<div class="span4">
 						<h2>Powered by <?php echo $this->html->link('Lithium', 'http://lithify.me/'); ?>.</h2>

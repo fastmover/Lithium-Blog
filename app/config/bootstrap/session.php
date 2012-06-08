@@ -49,7 +49,7 @@ use app\models\users;
 
 Users::applyFilter('save', function($self, $params, $chain){
 	$record = $params['entity'];
-	if (!$record->id) {
+	if ( ( !$record->id ) && !empty( $record->password ) ) {
 		$record->password = lithium\util\String::hash($record->password);
 	}
 	if (!empty($params['data'])) {
