@@ -1,0 +1,9 @@
+[submodule "libraries/li3_admin"]
+	path = libraries/li3_admin
+	url = https://github.com/mikedev9000/li3_admin.git
+[submodule "library/li3_docs"]
+	path = library/li3_docs
+	url = https://github.com/UnionOfRAD/li3_docs.git
+[submodule "libraries/li3_docs"]
+	path = libraries/li3_docs
+	url = https://github.com/UnionOfRAD/li3_docs.git
