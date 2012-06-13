@@ -36,8 +36,11 @@ Router::connect('/login', 'Users::login');
 //Router::connect('/users/view', 'Users::view');
 //Router::connect('/users/view/{:id:[0-9A-Fa-f]{24}}', 'Users::view');
 //Router::connect('/posts/view/{:id:[0-9A-Fa-f]{24}}', 'Posts::view');
+Router::connect('/posts/add', 'Posts::add');
 
+Router::connect('/tags', 'Posts::tagsIndex');
 Router::connect('/tags/search/{:args}', 'Posts::searchTags');
+Router::connect('/tags/{:args}', 'Posts::searchTags');
 
 
 
@@ -116,6 +119,7 @@ Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
 
 Router::connect('/{:controller}/{:action}/{:args}');
+Router::connect('/{:controller}/{:action}');
 
 
 ?>

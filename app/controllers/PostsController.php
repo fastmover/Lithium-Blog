@@ -14,16 +14,19 @@
 			
 		}
 		public function trimExplode($array) {
-			return array_map(
+			if($array){
+				return array_map(
 					"trim", 
 					explode(
 						",", 
 						$array
 					) 
 				);
+			} else {
+				return null;
+			}
 		}
-		public function add() {
-		
+		public function add() {		
 			$success = false;
 
 			if ($this->request->data) {
@@ -33,22 +36,40 @@
 				$success = $post->save();
 				
 			}
-			$this->_render['layout'] = 'wysiwyg';
+			//$this->_render['layout'] = 'wysiwyg';
 			return compact('success');
-			
+		}
+		/*
+		Tags
+		*/
+		public function tagsIndex() {
+			$result = Posts::all(array(
+				'fields' => array('tags')
+			));
+			//$tags = array();  //this is created by assignment $arr[] = $tag
+			foreach($result as $doc) {
+				if(isset($doc->tags[0]) && !empty($doc->tags[0])) {
+					foreach($doc->tags as $tag) {
+						$tags[] = $tag;
+					}
+				}
+			}
+			return compact('tags');
 		}
 		public function searchTags() {
-			
-			if( isset( $this->request->args ) ) {
+		$posts = null;
+		//$posts = Posts::all
+		if( isset( $this->request->args ) ) {
 				
-				$posts = Posts::find('all', array(
-						'conditions' => array( 'tags' => $this->request->args )
-					)
-				);
-				
-			}
+			$posts = Posts::find('all', array(
+					'conditions' => array( 'tags' => $this->request->args )
+				)
+			);
 			
 		}
+		$this->_render['template'] = 'index';
+		return compact('posts');
+	}
 		public function view() {
 		
 			if(!$this->request->params['id']){

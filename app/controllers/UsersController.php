@@ -37,10 +37,8 @@ class UsersController extends \lithium\action\Controller {
 			$this->request->data['profile.publicName'] = true;
 			$users = Users::create($this->request->data);
 			$success = $users->save();
-			return compact('success');
-		} else {
-			return false;
 		}
+		return compact('success');
 	}
 	public function edit() {
 		if(!$this->request->params['id']){
