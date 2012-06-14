@@ -4,11 +4,12 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<article>
-						<h3><?=$user->_id; ?></h3>
-						<h1><?=$this->html->link($user->username,'/users/edit/'.$user->_id); ?></h1>
-						<h3><?=$user->password; ?></h3>
-						<p><?=$user->access_level ?></p>
-						<p><?=$user->email ?></p>
+						<h2><?=$user->username; ?></h2>
+						<h5><?=$this->html->link('Edit ' . $user->username,'/users/edit/'.$user->_id); ?></h5>
+                                                <div class="marginLeft1">
+                                                    <p>Access Level: <?=$user->access_level ?></p>
+                                                    <p>E-Mail: <?=$user->email ?></p>
+                                                </div>
 					</article>
 				</div>
 			</div>
