@@ -36,6 +36,7 @@
 				$success = $post->save();
 				
 			}
+			$this->_render['layout'] = 'default';
 			//$this->_render['layout'] = 'wysiwyg';
 			return compact('success');
 		}
