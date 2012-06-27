@@ -113,13 +113,22 @@ Router::connect(
 		);
 	}
 );
+
+
+
 Router::connect('/{:controller}/{:action}.{:type}');
  /* Allow for quering mongo via UUID */
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
 
-Router::connect('/{:controller}/{:action}/{:args}');
-Router::connect('/{:controller}/{:action}');
 
+
+
+//Router::connect('/{:slug:[\w\-]+}', array('Posts::index'));
+
+
+Router::connect('/{:controller}/{:action}/{:args}');
+
+//Router::connect('/{:controller}/{:action}');
 
 ?>

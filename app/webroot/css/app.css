@@ -427,3 +427,13 @@ iframe.wysihtml5-sandbox {
 textarea {
 	width:100%;
 }
+ul.indexImages{
+	max-width:900px;
+}
+ul.indexImages li a img{
+	max-width:300px;
+}
+ul.indexImages li{
+	list-style:	none;
+	float:left;
+}

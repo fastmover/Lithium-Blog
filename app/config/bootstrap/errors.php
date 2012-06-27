@@ -10,6 +10,8 @@ use lithium\core\ErrorHandler;
 use lithium\action\Response;
 use lithium\net\http\Media;
 
+
+
 ErrorHandler::apply('lithium\action\Dispatcher::run', array(), function($info, $params) {
 	$response = new Response(array(
 		'request' => $params['request'],
@@ -25,4 +27,10 @@ ErrorHandler::apply('lithium\action\Dispatcher::run', array(), function($info, $
 	return $response;
 });
 
+$conditions = array('type' => 'lithium\action\DispatchException');
+
+ErrorHandler::apply('lithium\action\Dispatcher', 'run', $conditions, function($exception, $params) {
+    var_dump(compact('exception', 'params'));
+    die();
+});
 ?>

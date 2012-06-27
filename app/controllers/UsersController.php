@@ -38,7 +38,8 @@ class UsersController extends \lithium\action\Controller {
 			$users = Users::create($this->request->data);
 			$success = $users->save();
 		}
-		return compact('success');
+                $addUser = true;
+		return compact('success', 'addUser');
 	}
 	public function edit() {
 		if(!$this->request->params['id']){
@@ -74,7 +75,7 @@ class UsersController extends \lithium\action\Controller {
 		return compact('updated', 'user', 'error');
 	}
 	public function view(){
-		if(!$this->request->params['id']){
+		if(!isset($this->request->params['id'])){
 			return $this->redirect('/users/');
 		}
 		$user = Users::first( $this->request->params['id'] );
